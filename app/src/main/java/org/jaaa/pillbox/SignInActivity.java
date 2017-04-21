@@ -44,6 +44,7 @@ public class SignInActivity extends Activity
                     Toast.makeText(SignInActivity.this, "You are now signed in.", Toast.LENGTH_SHORT).show();
                     FirebaseHelper.user = FirebaseHelper.AUTH.getCurrentUser();
                     startActivity(new Intent(SignInActivity.this, HomeActivity.class));
+                    finish();
                 }
                 else
                 {
