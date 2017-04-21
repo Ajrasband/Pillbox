@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -100,7 +101,11 @@ public class MedicationExpandableListAdapter extends BaseExpandableListAdapter
             v = inflater.inflate(R.layout.medication_group, parent, false);
 
             Medications m = list.get(groupPos);
+            double dosage = m.getDosage();
+            String name = m.getMedName();
 
+            String title = String.format("Name: %s%nDosage: %f", name, dosage);
+            ((TextView)v.findViewById(R.id.textView)).setText(title);
         }
 
         return v;
