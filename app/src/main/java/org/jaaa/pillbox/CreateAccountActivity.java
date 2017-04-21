@@ -40,13 +40,13 @@ public class CreateAccountActivity extends Activity
                 if (task.isSuccessful())
                 {
                     Log.d(TAG, "Successfully created account.");
-                    Toast.makeText(CreateAccountActivity.this, "Account created!", Toast.LENGTH_SHORT);
+                    Toast.makeText(CreateAccountActivity.this, "Account created!", Toast.LENGTH_SHORT).show();
                     FirebaseHelper.user = FirebaseHelper.AUTH.getCurrentUser();
                 }
                 else
                 {
                     Log.d(TAG, "Unsuccessfully created account.");
-                    Toast.makeText(CreateAccountActivity.this, "Could not create account.", Toast.LENGTH_SHORT);
+                    Toast.makeText(CreateAccountActivity.this, "Could not create account.", Toast.LENGTH_SHORT).show();
                     FirebaseHelper.user = null;
                 }
             }
