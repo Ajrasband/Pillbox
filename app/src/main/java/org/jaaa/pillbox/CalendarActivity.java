@@ -31,14 +31,6 @@ public class CalendarActivity extends Activity {
                 Toast.makeText(getBaseContext(), "Selected date " + dayOfMonth + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
             }
         });
-        //ExpandableListView expandableList = (ExpandableListView) findViewById();
     }
 
 }
-
-/*
-ExpandableListView expandableList = (ExpandableListView)findViewById(android.R.id.list);
-        DoctorExpandableListAdapter adapter = new DoctorExpandableListAdapter(this, null);
-        expandableList.setAdapter(adapter);
- */
-
