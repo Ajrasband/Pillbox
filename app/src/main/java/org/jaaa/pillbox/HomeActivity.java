@@ -18,6 +18,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+
+
         //Check if user is signed in.
         if (FirebaseHelper.AUTH.getCurrentUser() == null)
         {
@@ -43,5 +46,6 @@ public class HomeActivity extends AppCompatActivity {
     public void pillboxButtonClicked(View v)
     {
         startActivity(new Intent(this, PillboxActivity.class));
+
     }
 }

@@ -10,7 +10,9 @@ public class Calendar extends Events implements Events_Interface {
     private String eventName;
     private TimeZone timeZone;
     private Locale locale;
+
     private java.util.Calendar date;
+
 
 
     public Calendar(){
@@ -19,9 +21,11 @@ public class Calendar extends Events implements Events_Interface {
 
     public Events add(){
         //TODO ("Add event name: ");
+
         //eventName = Input.stringIn();
         //TODO ("Add event time: ")
         return null;
+
     }
 
 }
