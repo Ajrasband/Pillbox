@@ -25,9 +25,9 @@ public class CreateAccountActivity extends Activity
 
     public void onCreateAccountButtonClicked(View v)
     {
-        String email = ((EditText)findViewById(R.id.new_email_box)).getText().toString();
-        String password = ((EditText)findViewById(R.id.new_password_box)).getText().toString();
-        createAccount(email, password);
+        //String email = ((EditText)findViewById(R.id.new_email_box)).getText().toString();
+        //String password = ((EditText)findViewById(R.id.new_password_box)).getText().toString();
+        //createAccount(email, password);
     }
 
     public void createAccount(String email, String password)
