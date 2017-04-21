@@ -20,6 +20,8 @@
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".MedicationsActivity" />
         <activity android:name=".DoctorActivity" />
+        <activity android:name=".CalendarActivity" />
+        <activity android:name=".PillboxActivity" />
     </application>
 
 </manifest>

@@ -1,12 +1,17 @@
 package org.jaaa.pillbox;
 
+
+import android.support.annotation.NonNull;
+
 import android.content.Intent;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CalendarView;
+import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
-    CalendarView calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,5 +27,21 @@ public class HomeActivity extends AppCompatActivity {
         }
 
 
+
+    }
+
+    public void infoButtonClicked(View v)
+    {
+        startActivity(new Intent(this, DoctorActivity.class));
+    }
+
+    public void calendarButtonClicked(View v)
+    {
+        startActivity(new Intent(this, CalendarActivity.class));
+    }
+
+    public void pillboxButtonClicked(View v)
+    {
+        startActivity(new Intent(this, PillboxActivity.class));
     }
 }
