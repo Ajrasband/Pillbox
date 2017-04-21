@@ -2,16 +2,16 @@ package org.jaaa.pillbox;
 
 
 import android.support.annotation.NonNull;
-=======
+
 import android.content.Intent;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
-    CalendarView calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,13 +19,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
-        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
 
-                Toast.makeText(getBaseContext(), "Selected date " + dayOfMonth + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
-            }
-        });
 
         //Check if user is signed in.
         if (FirebaseHelper.AUTH.getCurrentUser() == null)
@@ -36,6 +30,22 @@ public class HomeActivity extends AppCompatActivity {
         }
 
 
+
+    }
+
+    public void infoButtonClicked(View v)
+    {
+        startActivity(new Intent(this, DoctorActivity.class));
+    }
+
+    public void calendarButtonClicked(View v)
+    {
+        startActivity(new Intent(this, CalendarActivity.class));
+    }
+
+    public void pillboxButtonClicked(View v)
+    {
+        startActivity(new Intent(this, PillboxActivity.class));
 
     }
 }
