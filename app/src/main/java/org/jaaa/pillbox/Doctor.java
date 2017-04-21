@@ -8,15 +8,13 @@ public class Doctor{
     private String name;
     private String type;
     private String number;
-
-    public Doctor(){
+  
+    public Doctor(String name, String type, String number){
         super();
-        //TODO Get Doc name
-        name = Input.stringIn();
-        //TODO get doc type (occupation / specialty)
-        type = Input.stringIn();
-        //TODO get number to call
-        number = Input.stringIn();
+        this.name = name;
+        this.number = number;
+        this.type = type;
+
     }
 
     public String getName(){

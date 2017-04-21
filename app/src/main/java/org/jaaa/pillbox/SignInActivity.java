@@ -1,6 +1,7 @@
 package org.jaaa.pillbox;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -42,6 +43,7 @@ public class SignInActivity extends Activity
                     Log.d(TAG, "Sign in successful.");
                     Toast.makeText(SignInActivity.this, "You are now signed in.", Toast.LENGTH_SHORT).show();
                     FirebaseHelper.user = FirebaseHelper.AUTH.getCurrentUser();
+                    startActivity(new Intent(SignInActivity.this, HomeActivity.class));
                 }
                 else
                 {

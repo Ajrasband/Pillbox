@@ -11,8 +11,9 @@ public class DoctorActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_info);
-        ExpandableListView expandableList = (ExpandableListView)findViewById(android.R.id.list);
-        DoctorExpandableListAdapter adapter = new DoctorExpandableListAdapter(this, null);
+
+        ExpandableListView expandableList = (ExpandableListView)findViewById(R.id.expandableListView);
+        DoctorExpandableListAdapter adapter = new DoctorExpandableListAdapter(this, Doc_List.docList);
         expandableList.setAdapter(adapter);
     }
 }
