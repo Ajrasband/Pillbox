@@ -1,6 +1,9 @@
 package org.jaaa.pillbox;
 
 import android.app.Activity;
+
+import android.os.Bundle;
+
 import android.app.ExpandableListActivity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,11 +11,13 @@ import android.widget.CalendarView;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+
 /**
  * Created by iceho on 4/21/2017.
  */
 
 public class CalendarActivity extends Activity {
+
     CalendarView calendar;
 
     public void onCreate (Bundle savedInstanceState) {
@@ -36,3 +41,4 @@ ExpandableListView expandableList = (ExpandableListView)findViewById(android.R.i
         DoctorExpandableListAdapter adapter = new DoctorExpandableListAdapter(this, null);
         expandableList.setAdapter(adapter);
  */
+

@@ -20,7 +20,7 @@ public class Medications extends Events implements Events_Interface {
         dosage = b;
     }
 
-    @Override
+
     public Events add(String a, double b) {
         try{
             //TODO ("Medication Name: \n\t");
@@ -30,10 +30,12 @@ public class Medications extends Events implements Events_Interface {
             return new Medications(medName, dosage);
         }catch(Exception e){
             Log.d("Medications", "ERROR: add", e);
+
+            return null;
         }
     }
 
-    @Override
+
     public Events edit(String a, double b) {
         try{
             //TODO ("Medication Name: ")
@@ -43,6 +45,9 @@ public class Medications extends Events implements Events_Interface {
             return new Medications(medName, dosage);
         }catch(Exception e){
             Log.d("Medications", "ERROR: edit", e);
+
+            return null;
+
         }
 
     }
