@@ -20,7 +20,7 @@ public class SignInActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_user_login);
     }
 
     public void onSignInClicked(View v)
@@ -40,13 +40,13 @@ public class SignInActivity extends Activity
                 if (task.isSuccessful())
                 {
                     Log.d(TAG, "Sign in successful.");
-                    Toast.makeText(SignInActivity.this, "You are now signed in.", Toast.LENGTH_SHORT);
+                    Toast.makeText(SignInActivity.this, "You are now signed in.", Toast.LENGTH_SHORT).show();
                     FirebaseHelper.user = FirebaseHelper.AUTH.getCurrentUser();
                 }
                 else
                 {
                     Log.d(TAG, "Sign in unsuccessful.\n" + Log.getStackTraceString(task.getException()));
-                    Toast.makeText(SignInActivity.this, "Sign in failed!", Toast.LENGTH_SHORT);
+                    Toast.makeText(SignInActivity.this, "Sign in failed!", Toast.LENGTH_SHORT).show();
                     FirebaseHelper.user = null;
                 }
             }
