@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SignInActivity" />
+        <activity android:name=".CreateAccountActivity" />
+        <activity android:name=".MedicationsActivity" />
+        <activity android:name=".DoctorActivity" />
+        <activity android:name=".CalendarActivity" />
+        <activity android:name=".PillboxActivity" />
     </application>
 
 </manifest>
