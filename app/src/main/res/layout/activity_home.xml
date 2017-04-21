@@ -14,7 +14,7 @@
         android:text="Medications"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
+        android:onClick="pillboxButtonClicked"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="7dp" />
 
@@ -33,6 +33,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:onClick="infoButtonClicked"
         app:layout_constraintRight_toRightOf="parent" />
 
 
@@ -47,7 +48,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2"
-
+        android:onClick="calendarButtonClicked"
         app:layout_constraintVertical_bias="0.016" />
 
     <Button
@@ -64,7 +65,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/button4"
         app:layout_constraintVertical_bias="0.0"
-        android:layout_marginStart="8dp" />
+        android:layout_marginStart="8dp"
+        android:onClick="logOutClicked"/>
 
 
 </android.support.constraint.ConstraintLayout>

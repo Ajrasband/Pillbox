@@ -28,7 +28,7 @@ public class CalendarActivity extends Activity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
 
-                Toast.makeText(getBaseContext(), "Selected date " + dayOfMonth + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Selected date " + (month + 1) + "/" + dayOfMonth + "/" + year, Toast.LENGTH_SHORT).show();
             }
         });
         //ExpandableListView expandableList = (ExpandableListView) findViewById();
