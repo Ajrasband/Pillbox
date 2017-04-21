@@ -15,7 +15,7 @@ public class DoctorExpandableListAdapter extends BaseExpandableListAdapter
     private Context context;
     private ArrayList<Doctor> list;
 
-    public MedicationExpandableListAdapter(Context context, ArrayList<Doctor> list)
+    public DoctorExpandableListAdapter(Context context, ArrayList<Doctor> list)
     {
         this.context = context;
         this.list = list;
