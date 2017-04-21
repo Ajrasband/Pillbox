@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".SignInActivity" />
         <activity android:name=".CreateAccountActivity" />
+        <activity android:name=".MedicationsActivity" />
+        <activity android:name=".DoctorActivity" />
     </application>
 
 </manifest>
