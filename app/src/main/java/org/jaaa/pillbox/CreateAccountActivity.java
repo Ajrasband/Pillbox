@@ -3,6 +3,7 @@ package org.jaaa.pillbox;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -25,9 +26,22 @@ public class CreateAccountActivity extends Activity
 
     public void onCreateAccountButtonClicked(View v)
     {
-        //String email = ((EditText)findViewById(R.id.new_email_box)).getText().toString();
-        //String password = ((EditText)findViewById(R.id.new_password_box)).getText().toString();
-        //createAccount(email, password);
+        String email = ((EditText)findViewById(R.id.editText)).getText().toString();
+        String password = ((EditText)findViewById(R.id.editText2)).getText().toString();
+        String confirmPassword = ((EditText)findViewById(R.id.editText3)).getText().toString();
+
+        if (password.equals(confirmPassword))
+        {
+            createAccount(email, password);
+        }
+        else
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Pillbox");
+            builder.setMessage("The passwords must match.");
+            builder.setNeutralButton("Ok", null);
+            builder.create().show();
+        }
     }
 
     public void createAccount(String email, String password)

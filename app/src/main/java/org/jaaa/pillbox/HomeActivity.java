@@ -41,12 +41,23 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(this, PillboxActivity.class));
     }
 
-    public void logOutButtonClicked(View v)
+    public void logOutClicked(View v)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
         builder.setTitle("Pillbox");
         builder.setMessage("Are you sure you want to sign out?");
-        builder.setPositiveButton("Yes", null);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                FirebaseHelper.AUTH.signOut();
+                FirebaseHelper.user = null;
+                Doc_List.docList.clear();
+                startActivity(new Intent(HomeActivity.this, SignInActivity.class));
+                finish();
+            }
+        });
         builder.setNegativeButton("No", null);
         builder.create().show();
     }
