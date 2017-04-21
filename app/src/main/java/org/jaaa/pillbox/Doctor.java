@@ -8,12 +8,13 @@ public class Doctor{
     private String name;
     private String type;
     private String number;
-
+  
     public Doctor(String name, String type, String number){
         super();
         this.name = name;
         this.number = number;
         this.type = type;
+
     }
 
     public String getName(){

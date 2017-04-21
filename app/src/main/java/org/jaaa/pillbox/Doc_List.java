@@ -9,6 +9,7 @@ public class Doc_List {
 
     public static ArrayList <Doctor> docList = new ArrayList<Doctor>();
 
+
     public static void addDoc(Doctor doc){
         docList.add(0, doc);
     }
@@ -16,6 +17,7 @@ public class Doc_List {
         //TODO get doctor object they want to find
         Doctor useDoc = docList.get(i);
         return useDoc;
+
     }
 
 }
