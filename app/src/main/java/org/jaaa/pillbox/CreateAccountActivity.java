@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -19,6 +20,7 @@ public class CreateAccountActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_create_account);
     }
 
     public void onCreateAccountButtonClicked(View v)
@@ -37,13 +39,14 @@ public class CreateAccountActivity extends Activity
             {
                 if (task.isSuccessful())
                 {
-                    // TODO update ui
                     Log.d(TAG, "Successfully created account.");
+                    Toast.makeText(CreateAccountActivity.this, "Account created!", Toast.LENGTH_SHORT);
                     FirebaseHelper.user = FirebaseHelper.AUTH.getCurrentUser();
                 }
                 else
                 {
                     Log.d(TAG, "Unsuccessfully created account.");
+                    Toast.makeText(CreateAccountActivity.this, "Could not create account.", Toast.LENGTH_SHORT);
                     FirebaseHelper.user = null;
                 }
             }
