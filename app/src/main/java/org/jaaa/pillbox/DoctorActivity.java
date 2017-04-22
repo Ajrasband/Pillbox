@@ -1,9 +1,11 @@
 package org.jaaa.pillbox;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
+import android.view.View;
 import android.widget.ExpandableListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -25,14 +27,12 @@ public class DoctorActivity extends Activity
             return;
         }
 
-        Log.d("DoctorInfo", "Contacting database.");
         DatabaseReference ref = FirebaseHelper.USER.child(FirebaseHelper.user.getUid()).child("data").child("doc-info");
         ref.addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
-                Log.d("DoctorActivity", "Data change!");
                 for (DataSnapshot d : dataSnapshot.getChildren())
                 {
                     String name = d.child("name").getValue().toString();
@@ -53,5 +53,26 @@ public class DoctorActivity extends Activity
                 Log.d("DoctorActivity", Log.getStackTraceString(databaseError.toException()));
             }
         });
+    }
+
+    public void addDoctorClicked(View v)
+    {
+        startActivity(new Intent(this, AddDoctorActivity.class));
+    }
+
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+
+        DatabaseReference ref = FirebaseHelper.USER.child(FirebaseHelper.user.getUid()).child("data").child("doc-info");
+
+        for (Doctor d : Doc_List.docList)
+        {
+            DatabaseReference push = ref.push();
+            push.child("name").setValue(d.getName());
+            push.child("type").setValue(d.getType());
+            push.child("number").setValue(d.getNumber());
+        }
     }
 }
