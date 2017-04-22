@@ -53,15 +53,13 @@ public class MedicationsActivity extends Activity
             {
                 if (childPosition == 0)
                 {
-                    Intent i = new Intent(MedicationsActivity.this, AddDoctorActivity.class);
-                    i.putExtra("edit", true);
-                    i.putExtra("pos", groupPosition);
-                    startActivityForResult(i, 1001);
+                    newMed(true, groupPosition);
                 }
                 else if (childPosition == 1)
                 {
-                    final DatabaseReference ref = FirebaseHelper.USER.child(FirebaseHelper.user.getUid()).child("data").child("doc-info");
-                    Doc_List.docList.remove(groupPosition);
+                    final DatabaseReference ref = FirebaseHelper.USER.child(FirebaseHelper.user.getUid()).child("data").child("med-info-" + day);
+                    Medications.medications.get(day).remove(groupPosition);
+
                     ref.removeValue().addOnCompleteListener(new OnCompleteListener<Void>()
                     {
                         @Override
@@ -69,23 +67,20 @@ public class MedicationsActivity extends Activity
                         {
                             if (task.isSuccessful())
                             {
-                                for (Doctor d : Doc_List.docList)
+                                for (Medications m : Medications.medications.get(day))
                                 {
                                     DatabaseReference push = ref.push();
-                                    push.child("name").setValue(d.getName());
-                                    push.child("type").setValue(d.getType());
-                                    push.child("number").setValue(d.getNumber()).addOnCompleteListener(new OnCompleteListener<Void>()
-                                    {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task)
-                                        {
-                                            refreshList();
-                                        }
-                                    });
+                                    push.child("name").setValue(m.getMedName());
+                                    push.child("unit").setValue(m.getDosageType());
+                                    push.child("dose").setValue(m.getDosage());
+                                    push.child("hour").setValue(m.getHour());
+                                    push.child("minute").setValue(m.getMinutes());
                                 }
                             }
                         }
                     });
+
+                    refreshList();
                 }
 
                 return false;
@@ -94,6 +89,11 @@ public class MedicationsActivity extends Activity
     }
 
     public void newMedicationClicked(View v)
+    {
+        newMed(false, 0);
+    }
+
+    public void newMed(final boolean edit, final int pos)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final AlertDialog.Builder builder1 = new AlertDialog.Builder(MedicationsActivity.this);
@@ -131,21 +131,56 @@ public class MedicationsActivity extends Activity
                             builder2.setPositiveButton("Ok", new DialogInterface.OnClickListener()
                             {
                                 @Override
-                                public void onClick(DialogInterface dialog, int which)
+                                public void onClick(final DialogInterface dialog, int which)
                                 {
                                     int hour = ((TimePicker)root2.findViewById(R.id.timePicker2)).getCurrentHour();
                                     int minute = ((TimePicker)root2.findViewById(R.id.timePicker2)).getCurrentMinute();
 
-                                    Medications.medications.get(day).add(new Medications(name, dose, unit, hour, minute));
-                                    DatabaseReference ref = FirebaseHelper.USER.child(FirebaseHelper.user.getUid()).child("data").child("med-info-" + day);
-                                    DatabaseReference push = ref.push();
-                                    push.child("name").setValue(name);
-                                    push.child("dose").setValue(dose);
-                                    push.child("unit").setValue(unit);
-                                    push.child("hour").setValue(hour);
-                                    push.child("minute").setValue(minute);
+                                    final DatabaseReference ref = FirebaseHelper.USER.child(FirebaseHelper.user.getUid()).child("data").child("med-info-" + day);
 
-                                    refreshList();
+                                    if (edit)
+                                    {
+                                        Medications.medications.get(day).remove(pos);
+                                        Medications.medications.get(day).add(pos, new Medications(name, dose, unit, hour, minute));
+
+                                        ref.removeValue().addOnCompleteListener(new OnCompleteListener<Void>()
+                                        {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task)
+                                            {
+                                                if (task.isSuccessful())
+                                                {
+                                                    for (Medications m : Medications.medications.get(day))
+                                                    {
+                                                        DatabaseReference push = ref.push();
+                                                        push.child("name").setValue(m.getMedName());
+                                                        push.child("dose").setValue(m.getDosage());
+                                                        push.child("unit").setValue(m.getDosageType());
+                                                        push.child("hour").setValue(m.getHour());
+                                                        push.child("minute").setValue(m.getMinutes()).addOnCompleteListener(new OnCompleteListener<Void>()
+                                                        {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<Void> task)
+                                                            {
+                                                                refreshList();
+                                                            }
+                                                        });
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    }
+                                    else
+                                    {
+                                        Medications.medications.get(day).add(new Medications(name, dose, unit, hour, minute));
+                                        DatabaseReference push = ref.push();
+                                        push.child("name").setValue(name);
+                                        push.child("dose").setValue(dose);
+                                        push.child("unit").setValue(unit);
+                                        push.child("hour").setValue(hour);
+                                        push.child("minute").setValue(minute);
+                                        refreshList();
+                                    }
                                 }
                             });
                             builder2.setNegativeButton("Cancel", null);
@@ -177,10 +212,7 @@ public class MedicationsActivity extends Activity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
-                for (ArrayList<Medications> a : Medications.medications)
-                {
-                    a.clear();
-                }
+                Medications.medications.get(day).clear();
 
                 for (DataSnapshot d : dataSnapshot.getChildren())
                 {
@@ -196,13 +228,13 @@ public class MedicationsActivity extends Activity
                 ExpandableListView expandableList = (ExpandableListView)findViewById(R.id.list_view);
                 MedicationExpandableListAdapter adapter = new MedicationExpandableListAdapter(MedicationsActivity.this, Medications.medications.get(day));
                 expandableList.setAdapter(adapter);
-                //expandableList.setOnChildClickListener(listener);
+                expandableList.setOnChildClickListener(listener);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError)
             {
-                Log.d("DoctorActivity", Log.getStackTraceString(databaseError.toException()));
+                Log.d("MedicationsActivity", Log.getStackTraceString(databaseError.toException()));
             }
         });
     }
