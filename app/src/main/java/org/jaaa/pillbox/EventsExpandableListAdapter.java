@@ -30,17 +30,17 @@ public class EventsExpandableListAdapter extends BaseExpandableListAdapter
         {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.medication_sub, parent, false);
+        }
 
-            if (childPos == 0 && !isLast)
-            {
-                ((ImageView) v.findViewById(R.id.imageView)).setImageResource(android.R.drawable.ic_input_add);
-                ((TextView) v.findViewById(R.id.textView2)).setText("Edit");
-            }
-            else if (childPos == 1 || isLast)
-            {
-                ((ImageView) v.findViewById(R.id.imageView)).setImageResource(android.R.drawable.ic_delete);
-                ((TextView) v.findViewById(R.id.textView2)).setText("Delete");
-            }
+        if (childPos == 0 && !isLast)
+        {
+            ((ImageView) v.findViewById(R.id.imageView)).setImageResource(android.R.drawable.ic_input_add);
+            ((TextView) v.findViewById(R.id.textView2)).setText("Edit");
+        }
+        else if (childPos == 1 || isLast)
+        {
+            ((ImageView) v.findViewById(R.id.imageView)).setImageResource(android.R.drawable.ic_delete);
+            ((TextView) v.findViewById(R.id.textView2)).setText("Delete");
         }
 
         return v;
@@ -102,15 +102,14 @@ public class EventsExpandableListAdapter extends BaseExpandableListAdapter
         {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.medication_group, parent, false);
+
+            Events m = list.get(groupPos);
+            String name = m.getEventName();
+            String desc = m.getEventDescription();
+
+            String title = String.format("%s%n%s%nTime: %s", name, desc, m.getTime());
+            ((TextView) v.findViewById(R.id.textView)).setText(title);
         }
-
-        Events m = list.get(groupPos);
-        String name = m.getEventName();
-        String desc = m.getEventDescription();
-
-        String title = String.format("%s%n%s%nTime: %s", name, desc, m.getTime());
-        ((TextView) v.findViewById(R.id.textView)).setText(title);
-
 
         return v;
     }
