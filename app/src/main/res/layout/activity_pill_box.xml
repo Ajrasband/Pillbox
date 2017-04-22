@@ -7,135 +7,191 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".PillboxActivity">
 
-    <Button
+    <android.support.v7.widget.CardView
         android:id="@+id/button6"
-        android:layout_width="368dp"
+        android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Monday"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button8"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
 
-        android:background="@color/thirty"
-        android:textSize="18dp"
-        android:textColor="@color/white"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/thirty"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:onClick="mondayClicked"
+            android:text="Monday"
+            android:gravity="center"/>
+    </android.support.v7.widget.CardView>
 
-        android:onClick="mondayClicked"/>
-
-    <Button
+    <android.support.v7.widget.CardView
         android:id="@+id/button7"
-        android:layout_width="368dp"
+        android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="11dp"
-        android:text="Friday"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button10"
-        android:background="@color/sixtyFive"
-        android:textSize="18dp"
-        android:textColor="@color/white"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="4dp">
 
-        android:onClick="fridayClicked"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/sixtyFive"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:onClick="fridayClicked"
+            android:text="Friday"
+            android:gravity="center"/>
+    </android.support.v7.widget.CardView>
 
 
-    <Button
+    <android.support.v7.widget.CardView
         android:id="@+id/button8"
-        android:layout_width="368dp"
+        android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:text="Sunday"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@color/fifteen"
         android:textSize="18dp"
         android:textColor="@color/white"
-        android:onClick="sundayClicked"/>
+        android:onClick="sundayClicked"
+        android:text="Sunday"
+        android:gravity="center"/>
+    </android.support.v7.widget.CardView>
 
 
-    <Button
+    <android.support.v7.widget.CardView
         android:id="@+id/button9"
-        android:layout_width="368dp"
+        android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Saturday"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button7"
-        android:background="@color/sixtyFive"
-        android:textSize="18dp"
-        android:textColor="@color/white"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="4dp">
 
-        android:onClick="saturdayClicked"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/sixtyFive"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:onClick="saturdayClicked"
+            android:text="Saturday"
+            android:gravity="center"/>
+    </android.support.v7.widget.CardView>
 
-    <Button
+    <android.support.v7.widget.CardView
         android:id="@+id/button10"
-        android:layout_width="368dp"
+        android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="11dp"
-        android:text="Thursday"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button12"
-        android:background="@color/fiftyFive"
-        android:textSize="18dp"
-        android:textColor="@color/white"
-        android:onClick="thursdayClicked"/>
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
 
-    <Button
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/fiftyFive"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:onClick="thursdayClicked"
+            android:text="Thursday"
+            android:gravity="center"/>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
         android:id="@+id/button11"
-        android:layout_width="368dp"
+        android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginTop="8dp"
-        android:text="Tuesday"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button6"
-        android:background="@color/forty"
-        android:textSize="18dp"
-        android:textColor="@color/white"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="4dp">
 
-        android:onClick="tuesdayClicked"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/forty"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:onClick="tuesdayClicked"
+            android:text="Tuesday"
+            android:gravity="center"/>
+    </android.support.v7.widget.CardView>
 
-    <Button
+    <android.support.v7.widget.CardView
         android:id="@+id/button12"
-        android:layout_width="368dp"
+        android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Wednesday"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button11"
-        android:background="@color/fiftyFive"
-        android:textSize="18dp"
-        android:textColor="@color/white"
-        android:onClick="wednesdayClicked"/>
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/fiftyFive"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:onClick="wednesdayClicked"
+            android:text="Wednesday"
+            android:gravity="center"/>
+    </android.support.v7.widget.CardView>
 
 </android.support.constraint.ConstraintLayout>

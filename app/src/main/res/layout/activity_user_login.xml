@@ -44,12 +44,10 @@
         app:layout_constraintRight_toRightOf="parent"
         android:hint="password"/>
 
-    <Button
+    <android.support.v7.widget.CardView
         android:id="@+id/button3"
         android:layout_width="121dp"
         android:layout_height="57dp"
-        android:text="Log In"
-        android:onClick="onSignInClicked"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,9 +56,19 @@
         android:layout_marginTop="8dp"
         app:layout_constraintVertical_bias="0.69"
         tools:layout_editor_absoluteY="308dp"
-        android:background="@color/forty"
-        android:textSize="18dp"
-        android:textColor="@color/white"/>
+        app:cardElevation="4dp"
+        app:cardCornerRadius="4dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/forty"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:text="Log In"
+            android:onClick="onSignInClicked"
+            android:gravity="center"/>
+    </android.support.v7.widget.CardView>
 
     <Button
         android:id="@+id/create_new_account"

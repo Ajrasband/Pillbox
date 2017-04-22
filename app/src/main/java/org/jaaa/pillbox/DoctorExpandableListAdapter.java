@@ -27,19 +27,19 @@ public class DoctorExpandableListAdapter extends BaseExpandableListAdapter
 
         if (v == null)
         {
-            LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.medication_sub, parent, false);
+        }
 
-            if (childPos == 0 && !isLast)
-            {
-                ((ImageView)v.findViewById(R.id.imageView)).setImageResource(android.R.drawable.ic_input_add);
-                ((TextView)v.findViewById(R.id.textView2)).setText("Edit");
-            }
-            else if (childPos == 1 || isLast)
-            {
-                ((ImageView)v.findViewById(R.id.imageView)).setImageResource(android.R.drawable.ic_delete);
-                ((TextView)v.findViewById(R.id.textView2)).setText("Delete");
-            }
+        if (childPos == 0 && !isLast)
+        {
+            ((ImageView) v.findViewById(R.id.imageView)).setImageResource(android.R.drawable.ic_input_add);
+            ((TextView) v.findViewById(R.id.textView2)).setText("Edit");
+        }
+        else if (childPos == 1 || isLast)
+        {
+            ((ImageView) v.findViewById(R.id.imageView)).setImageResource(android.R.drawable.ic_delete);
+            ((TextView) v.findViewById(R.id.textView2)).setText("Delete");
         }
 
         return v;
@@ -99,11 +99,11 @@ public class DoctorExpandableListAdapter extends BaseExpandableListAdapter
 
         if (v == null)
         {
-            LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.medication_group, parent, false);
 
             Doctor d = list.get(groupPos);
-            ((TextView)v.findViewById(R.id.textView)).setText(d.getInfo());
+            ((TextView) v.findViewById(R.id.textView)).setText(d.getInfo());
         }
 
         return v;

@@ -33,7 +33,7 @@ public class AddDoctorActivity extends Activity
 
         if (edit)
         {
-            ((Button)findViewById(R.id.button16)).setText("Edit Doctor");
+            ((TextView)findViewById(R.id.add_doctor)).setText("Edit Doctor");
             pos = getIntent().getIntExtra("pos", 0);
         }
     }

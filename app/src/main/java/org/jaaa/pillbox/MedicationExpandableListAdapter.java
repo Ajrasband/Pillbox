@@ -34,19 +34,19 @@ public class MedicationExpandableListAdapter extends BaseExpandableListAdapter
 
         if (v == null)
         {
-            LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.medication_sub, parent, false);
+        }
 
-            if (childPos == 0 && !isLast)
-            {
-                ((ImageView)v.findViewById(R.id.imageView)).setImageResource(android.R.drawable.ic_input_add);
-                ((TextView)v.findViewById(R.id.textView2)).setText("Edit");
-            }
-            else if (childPos == 1 || isLast)
-            {
-                ((ImageView)v.findViewById(R.id.imageView)).setImageResource(android.R.drawable.ic_delete);
-                ((TextView)v.findViewById(R.id.textView2)).setText("Delete");
-            }
+        if (childPos == 0)
+        {
+            ((ImageView) v.findViewById(R.id.imageView)).setImageResource(android.R.drawable.ic_input_add);
+            ((TextView) v.findViewById(R.id.textView2)).setText("Edit");
+        }
+        else if (childPos == 1)
+        {
+            ((ImageView) v.findViewById(R.id.imageView)).setImageResource(android.R.drawable.ic_delete);
+            ((TextView) v.findViewById(R.id.textView2)).setText("Delete");
         }
 
         return v;
@@ -106,7 +106,7 @@ public class MedicationExpandableListAdapter extends BaseExpandableListAdapter
 
         if (v == null)
         {
-            LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.medication_group, parent, false);
 
             Medications m = list.get(groupPos);
@@ -130,7 +130,7 @@ public class MedicationExpandableListAdapter extends BaseExpandableListAdapter
             }
 
             String title = String.format("Name: %s%nDosage: %.1f %s%nTime: %s", name, dosage, unit, time);
-            ((TextView)v.findViewById(R.id.textView)).setText(title);
+            ((TextView) v.findViewById(R.id.textView)).setText(title);
         }
 
         return v;
