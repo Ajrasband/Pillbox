@@ -76,7 +76,7 @@ public class AddEventActivity extends Activity
                 String time = "";
 
                 DateFormat format = new SimpleDateFormat("HH:mm");
-                DateFormat format1 = new SimpleDateFormat("hh:mm");
+                DateFormat format1 = new SimpleDateFormat("hh:mm a");
                 Date date;
 
                 try
@@ -98,7 +98,7 @@ public class AddEventActivity extends Activity
                 {
                     final DatabaseReference ref = FirebaseHelper.USER.child(FirebaseHelper.user.getUid()).child("data").child("cal-info-" + dayInt + "-" + monthInt + "-" + yearInt);
                     Events.events.get(dateString).remove(pos);
-                    Events.events.get(dateString).add(pos, new Events(name, null, desc));
+                    Events.events.get(dateString).add(pos, new Events(name, time, desc));
 
                     ref.removeValue().addOnCompleteListener(new OnCompleteListener<Void>()
                     {
