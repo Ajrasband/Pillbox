@@ -27,7 +27,7 @@ public class AddEventActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.calendar_event);
+        setContentView(R.layout.calendar_subpage);
         dayInt = getIntent().getIntExtra("day", 1);
         day = dayInt < 10 ? "0" + dayInt : dayInt + "";
         monthInt = getIntent().getIntExtra("month", 1);

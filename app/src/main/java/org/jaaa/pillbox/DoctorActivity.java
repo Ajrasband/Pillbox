@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
+import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,6 +17,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class DoctorActivity extends Activity
 {
+    private ExpandableListView.OnChildClickListener listener;
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -27,12 +30,60 @@ public class DoctorActivity extends Activity
             return;
         }
 
+        listener = new ExpandableListView.OnChildClickListener()
+        {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id)
+            {
+                if (childPosition == 0)
+                {
+                    Intent i = new Intent(DoctorActivity.this, AddDoctorActivity.class);
+                    i.putExtra("edit", true);
+                    i.putExtra("pos", groupPosition);
+                    startActivityForResult(i, 1001);
+                }
+                else if (childPosition == 1)
+                {
+
+                }
+
+                return false;
+            }
+        };
+    }
+
+    public void addDoctorClicked(View v)
+    {
+        startActivity(new Intent(this, AddDoctorActivity.class));
+    }
+
+    @Override
+    public void onActivityResult(int request, int result, Intent data)
+    {
+        if (request == 1001)
+        {
+            refreshList();
+        }
+    }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+
+        refreshList();
+    }
+
+    public void refreshList()
+    {
         DatabaseReference ref = FirebaseHelper.USER.child(FirebaseHelper.user.getUid()).child("data").child("doc-info");
         ref.addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
+                Doc_List.docList.clear();
+
                 for (DataSnapshot d : dataSnapshot.getChildren())
                 {
                     String name = d.child("name").getValue().toString();
@@ -45,6 +96,7 @@ public class DoctorActivity extends Activity
                 ExpandableListView expandableList = (ExpandableListView)findViewById(R.id.expandableListView);
                 DoctorExpandableListAdapter adapter = new DoctorExpandableListAdapter(DoctorActivity.this, Doc_List.docList);
                 expandableList.setAdapter(adapter);
+                expandableList.setOnChildClickListener(listener);
             }
 
             @Override
@@ -53,26 +105,5 @@ public class DoctorActivity extends Activity
                 Log.d("DoctorActivity", Log.getStackTraceString(databaseError.toException()));
             }
         });
-    }
-
-    public void addDoctorClicked(View v)
-    {
-        startActivity(new Intent(this, AddDoctorActivity.class));
-    }
-
-    @Override
-    public void onStop()
-    {
-        super.onStop();
-
-        DatabaseReference ref = FirebaseHelper.USER.child(FirebaseHelper.user.getUid()).child("data").child("doc-info");
-
-        for (Doctor d : Doc_List.docList)
-        {
-            DatabaseReference push = ref.push();
-            push.child("name").setValue(d.getName());
-            push.child("type").setValue(d.getType());
-            push.child("number").setValue(d.getNumber());
-        }
     }
 }

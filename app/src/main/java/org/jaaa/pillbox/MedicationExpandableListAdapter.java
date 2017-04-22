@@ -30,13 +30,15 @@ public class MedicationExpandableListAdapter extends BaseExpandableListAdapter
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.medication_sub, parent, false);
 
-            if (childPos == 0)
+            if (childPos == 0 && !isLast)
             {
                 ((ImageView)v.findViewById(R.id.imageView)).setImageResource(android.R.drawable.ic_input_add);
+                ((TextView)v.findViewById(R.id.textView2)).setText("Edit");
             }
-            else if (childPos == 1)
+            else if (childPos == 1 || isLast)
             {
                 ((ImageView)v.findViewById(R.id.imageView)).setImageResource(android.R.drawable.ic_delete);
+                ((TextView)v.findViewById(R.id.textView2)).setText("Delete");
             }
         }
 
@@ -103,8 +105,9 @@ public class MedicationExpandableListAdapter extends BaseExpandableListAdapter
             Medications m = list.get(groupPos);
             double dosage = m.getDosage();
             String name = m.getMedName();
+            String unit = m.getDosageType();
 
-            String title = String.format("Name: %s%nDosage: %f", name, dosage);
+            String title = String.format("Name: %s%nDosage: %.1f %s", name, dosage, unit);
             ((TextView)v.findViewById(R.id.textView)).setText(title);
         }
 
