@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    tools:context=".AddDoctorActivity">
 
     <EditText
         android:id="@+id/editText4"
@@ -78,4 +79,5 @@
         android:background="@color/forty"
         android:textSize="18dp"
         android:textColor="@color/white"/>
+        android:onClick="createDoctorClicked"/>
 </android.support.constraint.ConstraintLayout>

@@ -30,14 +30,12 @@ public class Doctor{
     }
 
     public String getInfo(){
-        numberFormat();
-        return String.format("%s \n%s", name, type, number);
+        return String.format("%s\n%s\n%s", name, type, numberFormat());
     }
     public String numberFormat(){
         String p1 = number.substring(0, 3);
         String p2 = number.substring(3, 6);
         String p3 = number.substring(6, 10);
-        number = ("(" + p1 + ")" + p2 + "-" + p3);
-        return  number;
+        return ("(" + p1 + ")" + p2 + "-" + p3);
     }
 }

@@ -2,7 +2,6 @@ package org.jaaa.pillbox;
 
 
 import android.content.DialogInterface;
-import android.support.annotation.NonNull;
 
 import android.content.Intent;
 
@@ -10,8 +9,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CalendarView;
-import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -19,9 +16,6 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-
-
 
         //Check if user is signed in.
         if (FirebaseHelper.AUTH.getCurrentUser() == null)
@@ -45,25 +39,26 @@ public class HomeActivity extends AppCompatActivity {
     public void pillboxButtonClicked(View v)
     {
         startActivity(new Intent(this, PillboxActivity.class));
-
     }
 
     public void logOutClicked(View v)
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Are you sure you want to log out?");
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
         builder.setTitle("Pillbox");
-        builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener()
+        builder.setMessage("Are you sure you want to sign out?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener()
         {
             @Override
             public void onClick(DialogInterface dialog, int which)
             {
                 FirebaseHelper.AUTH.signOut();
+                FirebaseHelper.user = null;
                 Doc_List.docList.clear();
                 startActivity(new Intent(HomeActivity.this, SignInActivity.class));
                 finish();
             }
-        }).setNegativeButton(android.R.string.no, null);
+        });
+        builder.setNegativeButton("No", null);
         builder.create().show();
     }
 }

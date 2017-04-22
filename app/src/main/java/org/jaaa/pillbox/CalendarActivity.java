@@ -2,6 +2,7 @@ package org.jaaa.pillbox;
 
 import android.app.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.app.ExpandableListActivity;
@@ -28,6 +29,11 @@ public class CalendarActivity extends Activity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 Toast.makeText(getBaseContext(), "Selected date " + (month + 1) + "/" + dayOfMonth + "/" + year, Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(CalendarActivity.this, AddEventActivity.class);
+                i.putExtra("day", dayOfMonth);
+                i.putExtra("month", month + 1);
+                i.putExtra("year", year);
+                startActivity(i);
             }
         });
     }

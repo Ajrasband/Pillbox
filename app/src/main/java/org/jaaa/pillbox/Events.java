@@ -1,5 +1,6 @@
 package org.jaaa.pillbox;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -7,6 +8,9 @@ import java.util.Date;
  */
 
 public class Events implements Events_Interface{
+
+    public static ArrayList<Events> events = new ArrayList<>();
+
     private String eventName, eventDescription;
     private Date eventDate;
 

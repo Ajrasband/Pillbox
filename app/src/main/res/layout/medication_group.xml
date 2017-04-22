@@ -7,5 +7,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:paddingLeft="60dp"
+        android:paddingBottom="@dimen/default_gap"/>
 </LinearLayout>

@@ -33,17 +33,24 @@ public class SignInActivity extends Activity
 
     public void signIn(String email, String password)
     {
+        findViewById(R.id.progressBar2).setVisibility(View.VISIBLE);
+        findViewById(R.id.button3).setEnabled(false);
+
         FirebaseHelper.AUTH.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
         {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task)
             {
+                findViewById(R.id.progressBar2).setVisibility(View.INVISIBLE);
+                findViewById(R.id.button3).setEnabled(true);
+
                 if (task.isSuccessful())
                 {
                     Log.d(TAG, "Sign in successful.");
                     Toast.makeText(SignInActivity.this, "You are now signed in.", Toast.LENGTH_SHORT).show();
                     FirebaseHelper.user = FirebaseHelper.AUTH.getCurrentUser();
                     startActivity(new Intent(SignInActivity.this, HomeActivity.class));
+                    finish();
                 }
                 else
                 {
@@ -53,5 +60,10 @@ public class SignInActivity extends Activity
                 }
             }
         });
+    }
+
+    public void createAccountClicked(View v)
+    {
+        startActivity(new Intent(this, CreateAccountActivity.class));
     }
 }

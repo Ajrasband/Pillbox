@@ -6,11 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:layout_editor_absoluteX="0dp"
+    tools:context=".AddEventActivity">
 
     <Button
         android:id="@+id/button15"
-        android:layout_width="160dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:text="Cancel"
         android:layout_marginLeft="20dp"
@@ -23,6 +24,8 @@
         android:background="@color/forty"
         android:textSize="18dp"
         android:textColor="@color/white"/>
+
+        android:onClick="onCancelClick"/>
 
     <EditText
         android:id="@+id/editText5"
@@ -59,7 +62,7 @@
 
     <Button
         android:id="@+id/button14"
-        android:layout_width="160dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:text="Save Event"
         android:layout_marginRight="16dp"
@@ -70,6 +73,8 @@
         android:textSize="18dp"
         android:textColor="@color/white"
         android:layout_marginLeft="20dp" />
+
+        android:onClick="onSaveClick"/>
 
 
 </android.support.constraint.ConstraintLayout>
