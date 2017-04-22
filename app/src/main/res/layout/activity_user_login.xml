@@ -57,7 +57,10 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintVertical_bias="0.69"
-        tools:layout_editor_absoluteY="308dp"/>
+        tools:layout_editor_absoluteY="308dp"
+        android:background="@color/forty"
+        android:textSize="18dp"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/create_new_account"
@@ -71,7 +74,8 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/button3"
+        android:textColor="@color/fifteen"/>
 
     <ProgressBar
         android:id="@+id/progressBar2"
