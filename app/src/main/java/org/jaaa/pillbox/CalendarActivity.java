@@ -26,7 +26,7 @@ public class CalendarActivity extends Activity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 Toast.makeText(getBaseContext(), "Selected date " + (month + 1) + "/" + dayOfMonth + "/" + year, Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(CalendarActivity.this, AddEventActivity.class);
+                Intent i = new Intent(CalendarActivity.this, CalendarEventActivity.class);
                 i.putExtra("day", dayOfMonth);
                 i.putExtra("month", month + 1);
                 i.putExtra("year", year);

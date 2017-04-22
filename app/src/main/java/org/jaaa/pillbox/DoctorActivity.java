@@ -61,16 +61,10 @@ public class DoctorActivity extends Activity
                                     DatabaseReference push = ref.push();
                                     push.child("name").setValue(d.getName());
                                     push.child("type").setValue(d.getType());
-                                    push.child("number").setValue(d.getNumber()).addOnCompleteListener(new OnCompleteListener<Void>()
-                                    {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task)
-                                        {
-                                            refreshList();
-                                        }
-                                    });
+                                    push.child("number").setValue(d.getNumber());
                                 }
                             }
+                            refreshList();
                         }
                     });
                 }

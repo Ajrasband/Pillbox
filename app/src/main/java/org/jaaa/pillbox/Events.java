@@ -2,6 +2,7 @@ package org.jaaa.pillbox;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * Event object to use in Medication and calendar subclasses
@@ -9,21 +10,21 @@ import java.util.Date;
 
 public class Events implements Events_Interface{
 
-    public static ArrayList<Events> events = new ArrayList<>();
+    public static HashMap<String, ArrayList<Events>> events = new HashMap<>();
 
     private String eventName, eventDescription;
-    private Date eventDate;
+    private String time;
 
     public Events(){
         //Empty constructor
         eventName = "";
         eventDescription = "";
-        eventDate = new Date();
+        time = "";
     }
 
-    public Events (String a, Date b, String c) {
+    public Events (String a, String b, String c) {
         eventName = a;
-        eventDate = b;
+        time = b;
         eventDescription = c;
     }
 
@@ -35,26 +36,14 @@ public class Events implements Events_Interface{
         return null;
     }
 
-    //Setters
-    public void setEventName(String newName) {
-        eventName = newName;
-    }
-
-    public void setEventDate(Date newDate) {
-        eventDate = newDate;
-    }
-
-    public void setEventDescription(String newDescription) {
-        eventDescription = newDescription;
-    }
 
     //Getters
     public String getEventName (){
         return eventName;
     }
 
-    public Date getEventDate () {
-        return eventDate;
+    public String getTime () {
+        return time;
     }
 
     public String getEventDescription (){

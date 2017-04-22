@@ -9,20 +9,14 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.text.DateFormat;
-import java.text.FieldPosition;
-import java.text.ParseException;
-import java.text.ParsePosition;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
-public class MedicationExpandableListAdapter extends BaseExpandableListAdapter
+public class EventsExpandableListAdapter extends BaseExpandableListAdapter
 {
     private Context context;
-    private ArrayList<Medications> list;
+    private ArrayList<Events> list;
 
-    public MedicationExpandableListAdapter(Context context, ArrayList<Medications> list)
+    public EventsExpandableListAdapter(Context context, ArrayList<Events> list)
     {
         this.context = context;
         this.list = list;
@@ -109,27 +103,11 @@ public class MedicationExpandableListAdapter extends BaseExpandableListAdapter
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.medication_group, parent, false);
 
-            Medications m = list.get(groupPos);
-            double dosage = m.getDosage();
-            String name = m.getMedName();
-            String unit = m.getDosageType();
-            String time = "";
+            Events m = list.get(groupPos);
+            String name = m.getEventName();
+            String desc = m.getEventDescription();
 
-            DateFormat format = new SimpleDateFormat("HH:mm");
-            DateFormat format1 = new SimpleDateFormat("hh:mm a");
-            Date date;
-
-            try
-            {
-                date = format.parse(m.getHour() + ":" + m.getMinutes());
-                time = format1.format(date);
-            }
-            catch (ParseException e)
-            {
-                Log.d("MedicationList", Log.getStackTraceString(e));
-            }
-
-            String title = String.format("Name: %s%nDosage: %.1f %s%nTime: %s", name, dosage, unit, time);
+            String title = String.format("%s%n%s%nTime: %s", name, desc, m.getTime());
             ((TextView)v.findViewById(R.id.textView)).setText(title);
         }
 

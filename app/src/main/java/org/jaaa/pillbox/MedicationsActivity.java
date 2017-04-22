@@ -77,10 +77,10 @@ public class MedicationsActivity extends Activity
                                     push.child("minute").setValue(m.getMinutes());
                                 }
                             }
+                            refreshList();
                         }
                     });
 
-                    refreshList();
                 }
 
                 return false;
