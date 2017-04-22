@@ -41,7 +41,7 @@ public class SignInActivity extends Activity
         findViewById(R.id.button3).setEnabled(false);
 
         FirebaseHelper.AUTH.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
-        {
+            {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task)
             {

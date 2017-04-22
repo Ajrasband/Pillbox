@@ -9,22 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity">
+        <activity android:name=".HomeActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignInActivity" />
-        <activity android:name=".CreateAccountActivity" />
-        <activity android:name=".MedicationsActivity" />
-        <activity android:name=".DoctorActivity" />
-        <activity android:name=".CalendarActivity" />
-        <activity android:name=".PillboxActivity" />
-        <activity android:name=".AddEventActivity" />
-        <activity android:name=".AddDoctorActivity" />
-        <activity android:name=".CalendarEventActivity" />
+        <activity android:name=".SignInActivity" android:screenOrientation="portrait" />
+        <activity android:name=".CreateAccountActivity" android:screenOrientation="portrait" />
+        <activity android:name=".MedicationsActivity" android:screenOrientation="portrait" />
+        <activity android:name=".DoctorActivity" android:screenOrientation="portrait" />
+        <activity android:name=".CalendarActivity" android:screenOrientation="portrait" />
+        <activity android:name=".PillboxActivity" android:screenOrientation="portrait" />
+        <activity android:name=".AddEventActivity" android:screenOrientation="portrait" />
+        <activity android:name=".AddDoctorActivity" android:screenOrientation="portrait" />
+        <activity android:name=".CalendarEventActivity" android:screenOrientation="portrait" />
     </application>
 
 </manifest>
