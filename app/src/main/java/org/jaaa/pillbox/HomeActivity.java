@@ -43,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void logOutClicked(View v)
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
         builder.setTitle("Pillbox");
         builder.setMessage("Are you sure you want to sign out?");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener()

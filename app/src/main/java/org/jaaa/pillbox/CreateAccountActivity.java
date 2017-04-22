@@ -1,6 +1,7 @@
 package org.jaaa.pillbox;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -24,7 +25,7 @@ public class CreateAccountActivity extends Activity
         setContentView(R.layout.activity_create_account);
     }
 
-    public void onCreateAccountButtonClicked(View v)
+    public void createAccountClicked(View v)
     {
         String email = ((EditText)findViewById(R.id.editText)).getText().toString();
         String password = ((EditText)findViewById(R.id.editText2)).getText().toString();
@@ -56,6 +57,8 @@ public class CreateAccountActivity extends Activity
                     Log.d(TAG, "Successfully created account.");
                     Toast.makeText(CreateAccountActivity.this, "Account created!", Toast.LENGTH_SHORT).show();
                     FirebaseHelper.user = FirebaseHelper.AUTH.getCurrentUser();
+                    startActivity(new Intent(CreateAccountActivity.this, HomeActivity.class));
+                    finish();
                 }
                 else
                 {

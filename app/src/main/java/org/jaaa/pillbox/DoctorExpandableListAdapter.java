@@ -33,10 +33,12 @@ public class DoctorExpandableListAdapter extends BaseExpandableListAdapter
             if (childPos == 0)
             {
                 ((ImageView)v.findViewById(R.id.imageView)).setImageResource(android.R.drawable.ic_input_add);
+                ((TextView)v.findViewById(R.id.textView)).setText("Edit");
             }
             else if (childPos == 1)
             {
                 ((ImageView)v.findViewById(R.id.imageView)).setImageResource(android.R.drawable.ic_delete);
+                ((TextView)v.findViewById(R.id.textView)).setText("Delete");
             }
         }
 
