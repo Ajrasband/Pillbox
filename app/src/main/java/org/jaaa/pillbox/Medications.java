@@ -25,16 +25,20 @@ public class Medications extends Events implements Events_Interface {
     private String medName;
     private double dosage;
     private String dosageType;
+    private int hour;
+    private int minutes;
 
     public Medications(){
         super();
         //All other input added
     }
-    public Medications(String a, double b, String d){
+    public Medications(String a, double b, String d, int h, int m){
         super();
         medName = a;
         dosage = b;
         dosageType = d;
+        hour = h;
+        minutes = m;
     }
 
 
@@ -44,7 +48,7 @@ public class Medications extends Events implements Events_Interface {
             medName = a;
             //TODO ("Dosage Ammount: ")
             dosage = b;
-            return new Medications(medName, dosage, null);
+            return new Medications(medName, dosage, null, 0, 0);
         }catch(Exception e){
             Log.d("Medications", "ERROR: add", e);
 
@@ -59,7 +63,7 @@ public class Medications extends Events implements Events_Interface {
             medName = a;
             //TODO ("Dosage ammount: ")
             dosage = b;
-            return new Medications(medName, dosage, null);
+            return new Medications(medName, dosage, null, 0, 0);
         }catch(Exception e){
             Log.d("Medications", "ERROR: edit", e);
 
@@ -80,5 +84,15 @@ public class Medications extends Events implements Events_Interface {
     public String getDosageType()
     {
         return dosageType;
+    }
+
+    public int getHour()
+    {
+        return hour;
+    }
+
+    public int getMinutes()
+    {
+        return minutes;
     }
 }

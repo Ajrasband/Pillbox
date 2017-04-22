@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,7 +47,32 @@ public class DoctorActivity extends Activity
                 }
                 else if (childPosition == 1)
                 {
-
+                    final DatabaseReference ref = FirebaseHelper.USER.child(FirebaseHelper.user.getUid()).child("data").child("doc-info");
+                    Doc_List.docList.remove(groupPosition);
+                    ref.removeValue().addOnCompleteListener(new OnCompleteListener<Void>()
+                    {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task)
+                        {
+                            if (task.isSuccessful())
+                            {
+                                for (Doctor d : Doc_List.docList)
+                                {
+                                    DatabaseReference push = ref.push();
+                                    push.child("name").setValue(d.getName());
+                                    push.child("type").setValue(d.getType());
+                                    push.child("number").setValue(d.getNumber()).addOnCompleteListener(new OnCompleteListener<Void>()
+                                    {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task)
+                                        {
+                                            refreshList();
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    });
                 }
 
                 return false;

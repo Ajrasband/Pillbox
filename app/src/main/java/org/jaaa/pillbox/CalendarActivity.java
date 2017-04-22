@@ -13,9 +13,6 @@ import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 
-/**
- * Created by iceho on 4/21/2017.
- */
 
 public class CalendarActivity extends Activity {
 

@@ -47,11 +47,15 @@ public class CreateAccountActivity extends Activity
 
     public void createAccount(String email, String password)
     {
+        findViewById(R.id.progressBar3).setVisibility(View.VISIBLE);
+        findViewById(R.id.button14).setEnabled(false);
         FirebaseHelper.AUTH.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>()
         {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task)
             {
+                findViewById(R.id.progressBar3).setVisibility(View.INVISIBLE);
+                findViewById(R.id.button14).setEnabled(true);
                 if (task.isSuccessful())
                 {
                     Log.d(TAG, "Successfully created account.");

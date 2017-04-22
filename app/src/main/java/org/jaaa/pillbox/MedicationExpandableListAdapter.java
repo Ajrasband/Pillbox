@@ -1,6 +1,7 @@
 package org.jaaa.pillbox;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +9,13 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParseException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MedicationExpandableListAdapter extends BaseExpandableListAdapter
 {
@@ -106,8 +113,23 @@ public class MedicationExpandableListAdapter extends BaseExpandableListAdapter
             double dosage = m.getDosage();
             String name = m.getMedName();
             String unit = m.getDosageType();
+            String time = "";
 
-            String title = String.format("Name: %s%nDosage: %.1f %s", name, dosage, unit);
+            DateFormat format = new SimpleDateFormat("HH:mm");
+            DateFormat format1 = new SimpleDateFormat("hh:mm");
+            Date date;
+
+            try
+            {
+                date = format.parse(m.getHour() + ":" + m.getMinutes());
+                time = format1.format(date);
+            }
+            catch (ParseException e)
+            {
+                Log.d("MedicationList", Log.getStackTraceString(e));
+            }
+
+            String title = String.format("Name: %s%nDosage: %.1f %s%nTime: %s", name, dosage, unit, time);
             ((TextView)v.findViewById(R.id.textView)).setText(title);
         }
 

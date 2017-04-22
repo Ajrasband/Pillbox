@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 

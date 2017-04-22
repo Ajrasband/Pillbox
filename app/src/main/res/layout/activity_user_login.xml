@@ -75,7 +75,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3"
-        android:textColor="@color/fifteen"/>
+        android:textColor="@color/fifteen"
         android:onClick="createAccountClicked"/>
 
     <ProgressBar
