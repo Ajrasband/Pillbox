@@ -28,7 +28,11 @@ public class SignInActivity extends Activity
     {
         String email = ((EditText)findViewById(R.id.email_box)).getText().toString();
         String password = ((EditText)findViewById(R.id.password_box)).getText().toString();
-        signIn(email, password);
+
+        if (!email.isEmpty() && !password.isEmpty())
+        {
+            signIn(email, password);
+        }
     }
 
     public void signIn(String email, String password)
