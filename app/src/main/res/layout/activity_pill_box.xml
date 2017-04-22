@@ -20,6 +20,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button8"
+
+        android:background="@color/thirty"
+        android:textSize="18dp"
+        android:textColor="@color/white"/>
+
         android:onClick="mondayClicked"/>
 
     <Button
@@ -36,7 +41,12 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button10"
+        android:background="@color/sixtyFive"
+        android:textSize="18dp"
+        android:textColor="@color/white"/>
+
         android:onClick="fridayClicked"/>
+
 
     <Button
         android:id="@+id/button8"
@@ -50,7 +60,11 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
+        android:background="@color/fifteen"
+        android:textSize="18dp"
+        android:textColor="@color/white"/>
         android:onClick="sundayClicked"/>
+
 
     <Button
         android:id="@+id/button9"
@@ -66,6 +80,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button7"
+        android:background="@color/sixtyFive"
+        android:textSize="18dp"
+        android:textColor="@color/white"/>
+
         android:onClick="saturdayClicked"/>
 
     <Button
@@ -82,6 +100,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button12"
+        android:background="@color/fiftyFive"
+        android:textSize="18dp"
+        android:textColor="@color/white"/>
         android:onClick="thursdayClicked"/>
 
     <Button
@@ -93,6 +114,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button6"
+        android:background="@color/forty"
+        android:textSize="18dp"
+        android:textColor="@color/white"/>
+
         android:onClick="tuesdayClicked"/>
 
     <Button
@@ -108,6 +133,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button11"
+        android:background="@color/fiftyFive"
+        android:textSize="18dp"
+        android:textColor="@color/white"/>
         android:onClick="wednesdayClicked"/>
 
 </android.support.constraint.ConstraintLayout>

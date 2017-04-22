@@ -76,5 +76,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/forty"
+        android:textSize="18dp"
+        android:textColor="@color/white"/>
         android:onClick="createDoctorClicked"/>
 </android.support.constraint.ConstraintLayout>
