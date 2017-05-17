@@ -123,6 +123,8 @@ public class CalendarEventActivity extends Activity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
+                NotificationService.setLatestEvent(dataSnapshot);
+
                 if (Events.events.containsKey(dateString))
                 {
                     Events.events.get(dateString).clear();

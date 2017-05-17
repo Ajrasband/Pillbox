@@ -212,6 +212,7 @@ public class MedicationsActivity extends Activity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
+                NotificationService.setLatestMed(dataSnapshot);
                 Medications.medications.get(day).clear();
 
                 for (DataSnapshot d : dataSnapshot.getChildren())
